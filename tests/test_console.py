@@ -21,6 +21,15 @@ class TestConsole(unittest.TestCase):
         """setup for the test"""
         cls.console = HBNBCommand()
 
+    def test_exists(self):
+        """checking for docstrings"""
+        self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_create.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_show.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_all.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_update.__doc__)
+
 
 if __name__ == "__main__":
     unittest.main()
