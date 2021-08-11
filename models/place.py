@@ -40,26 +40,26 @@ class Place(BaseModel, Base):
     amenities = relationship("Amenity",
                              secondary=place_amenity, viewonly=False)
 
-    @property
-    def reviews(self):
-        """getter function for reviews attribute"""
-        result = []
-        for review in self.reviews:
-            if review.place_id == self.id:
-                result.append(review)
-        return result
+        @property
+        def reviews(self):
+            """returns list of Reviews instances"""
+            result = []
+            for i in models.storage.all(Review).values():
+                if i.place_id == self.id:
+                    result.append(i)
+            return result
 
-    @property
-    def amenities(self):
-        """getter function for amenity attribute"""
-        result = []
-        for amenity in models.storage.all(Amenity).values():
-            if amenity.id == self.amenity_id:
-                result.append(amenity)
-        return result
+        @property
+        def amenities(self):
+            """returns list of amenity instances"""
+            result = []
+            for i in models.storage.all(Amenity).values():
+                if i.id == self.amenity_ids:
+                    result.append(i)
+            return result
 
-    @amenities.setter
-    def amenities(self, obj):
-        """ setter for amenities class """
-        if (isinstance(obj, Amenity)):
-            self.amenity_ids.append(obj.id)
+        @amenities.setter
+        def amenities(self, value):
+            """setter for amenities"""
+            if isinstance(value, Amenity):
+                self.amenity_ids.append(value.id)
