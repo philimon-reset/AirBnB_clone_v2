@@ -45,10 +45,9 @@ class DBStorage:
             for table in Base.metadata.tables:
                 clss = models.dummy_tables[table]
                 for row in self.__session.query(clss).all():
-                    if (isinstance(clss, decl_api.DeclarativeMeta)):
-                        key = "{}.{}".format(clss.__name__, row.id)
-                        row.to_dict()
-                        result.update({key: row})
+                    key = "{}.{}".format(clss.__name__, row.id)
+                    row.to_dict()
+                    result.update({key: row})
         return result
 
     def new(self, obj):
