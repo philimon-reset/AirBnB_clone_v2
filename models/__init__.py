@@ -11,7 +11,7 @@ from models.city import City
 from models.review import Review
 from models.state import State
 from models.user import User
-from models.place import Place
+from models.place import Place, place_amenity
 from models.amenity import Amenity
 
 from os import environ
@@ -23,7 +23,8 @@ dummy_classes = {"BaseModel": BaseModel, "User": User,
 
 dummy_tables = {"states": State, "cities": City,
                 "users": User, "places": Place,
-                "reviews": Review}
+                "reviews": Review, "amenities": Amenity,
+                "place_amenity": place_amenity}
 
 storage_engine = environ.get("HBNB_TYPE_STORAGE")
 

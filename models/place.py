@@ -6,7 +6,15 @@ from models.base_model import BaseModel, Base
 from models.city import City
 from models.user import User
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, String, Integer, Float, ForeignKey
+from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
+
+place_amenity = Table('place_amenity', Base.metadata,
+                      Column('place_id', String(60),
+                             ForeignKey('places.id'),
+                             primary_key=True, nullable=False),
+                      Column('amenity_id', String(60),
+                             ForeignKey('amenities.id'),
+                             primary_key=True, nullable=False))
 
 
 class Place(BaseModel, Base):
@@ -27,12 +35,32 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
     amenity_ids = []
     reviews = relationship("Review", backref="place")
+    amenities = relationship("Amenity",
+                             secondary=place_amenity, viewonly=False)
 
     @property
-    def review(self):
+    def reviews(self):
         """getter function for reviews attribute"""
         result = []
         for review in self.reviews:
             if review.place_id == self.id:
                 result.append(review)
         return result
+
+    @property
+    def amenities(self):
+        """getter function for amenity attribute"""
+        result = []
+        for amenity in self.amenity_ids:
+            if amenity == self.id:
+                result.append(amenity)
+        return result
+
+    @amenities.setter
+    def amenities(self, obj):
+        """ setter for amenities class """
+        try:
+            if (obj.__tablename__ == "amenities"):
+                self.amenity_ids.append(obj.id)
+        except:
+            pass

@@ -32,6 +32,7 @@ class BaseModel():
                     setattr(self, key, datetime.strptime(kwargs[key], iso))
                 else:
                     setattr(self, key, kwargs[key])
+                self.id = str(uuid4())
         else:
             self.id = str(uuid4())
             self.created_at = self.updated_at = datetime.now()
