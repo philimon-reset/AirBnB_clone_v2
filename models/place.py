@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
     module containing places to represent the place
+    module containing places to represent the place
 """
 from models.base_model import BaseModel, Base
 from models.city import City
@@ -19,6 +20,7 @@ place_amenity = Table('place_amenity', Base.metadata,
 
 class Place(BaseModel, Base):
     """
+        Place class to represent places
         Place class to represent places
     """
     __tablename__ = "places"
