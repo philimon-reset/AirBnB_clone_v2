@@ -7,7 +7,7 @@ from models import city, state
 from os import environ, getenv
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Table
 
 HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
 HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
@@ -44,10 +44,13 @@ class DBStorage:
         else:
             for table in Base.metadata.tables:
                 cls = models.dummy_tables[table]
-                for row in self.__session.query(cls).all():
-                    key = "{}.{}".format(cls.__name__, row.id)
-                    row.to_dict()
-                    result.update({key: row})
+                if (isinstance(cls, Table)):
+                        result.update({type(cls).__name__: cls})
+                else:
+                    for row in self.__session.query(cls).all():
+                        key = "{}.{}".format(cls.__name__, row.id)
+                        row.to_dict()
+                        result.update({key: row})
         return result
 
     def new(self, obj):
