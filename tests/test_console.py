@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """test for console"""
 import unittest
@@ -23,24 +22,11 @@ from models.engine.file_storage import FileStorage
 class TestConsole(unittest.TestCase):
     """this will test the console"""
 
-    @classmethod
-    def setUpClass(cls):
+    def StartupClass(cls):
         """setup for the test"""
         cls.console = HBNBCommand()
 
-    @classmethod
-    def teardown(cls):
-        """at the end of the test this will tear it down"""
-        del cls.console
-
-    def tearDown(self):
-        """Remove temporary file (file.json) created as a result"""
-        try:
-            os.remove("file.json")
-        except Exception:
-            pass
-
-    def test_docstrings_in_console(self):
+    def test_exists(self):
         """checking for docstrings"""
         self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
         self.assertIsNotNone(HBNBCommand.do_create.__doc__)
