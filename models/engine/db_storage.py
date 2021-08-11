@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """DB storage
 """
@@ -74,4 +73,3 @@ class DBStorage:
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Scope = scoped_session(Session)
         self.__session = Scope()
-        
