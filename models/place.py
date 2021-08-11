@@ -53,8 +53,8 @@ class Place(BaseModel, Base):
     def amenities(self):
         """getter function for amenity attribute"""
         result = []
-        for amenity in self.amenity_ids:
-            if amenity == Amenity.id:
+        for amenity in models.storage.all(Amenity).values():
+            if amenity.id == self.amenity_id:
                 result.append(amenity)
         return result
 

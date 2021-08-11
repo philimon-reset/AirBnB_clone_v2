@@ -54,24 +54,6 @@ class TestConsole(unittest.TestCase):
         HBNBCommand().do_create("BaseModel")
         self.assertEqual(temp_out.getvalue(), '** class doesn\'t exist **\n')
         temp_out.close()
-
-        temp_out = StringIO()
-        sys.stdout = temp_out
-        HBNBCommand().do_create(None)
-        self.assertEqual(temp_out.getvalue(), '** class name missing **\n')
-        temp_out.close()
-
-        temp_out = StringIO()
-        sys.stdout = temp_out
-        HBNBCommand().do_create(None)
-        self.assertEqual(temp_out.getvalue(), '** class name missing **\n')
-        temp_out.close()
-
-        temp_out = StringIO()
-        sys.stdout = temp_out
-        HBNBCommand().do_create(None)
-        self.assertEqual(temp_out.getvalue(), '** class name missing **\n')
-        temp_out.close()
         sys.stdout = sys.__stdout__
 
 if __name__ == "__main__":
