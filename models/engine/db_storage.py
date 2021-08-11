@@ -6,7 +6,7 @@ from models.base_model import BaseModel, Base
 from models import city, state
 from os import environ, getenv
 from sqlalchemy.orm import scoped_session
-from sqlalchemy.orm import sessionmaker, decl_api
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
 HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
