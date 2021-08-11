@@ -59,8 +59,5 @@ class Place(BaseModel, Base):
     @amenities.setter
     def amenities(self, obj):
         """ setter for amenities class """
-        try:
-            if (obj.__tablename__ == "amenities"):
-                self.amenity_ids.append(obj.id)
-        except:
-            pass
+        if (isinstance(obj, Amenity)):
+            self.amenity_ids.append(obj.id)
