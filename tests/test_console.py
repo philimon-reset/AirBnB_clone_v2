@@ -19,7 +19,7 @@ class TestConsole(unittest.TestCase):
     """this will test the console"""
 
     def test_exists(self):
-        """checking for docstrings"""
+        """checking for docstrings i think"""
         self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
         self.assertIsNotNone(HBNBCommand.do_create.__doc__)
         self.assertIsNotNone(HBNBCommand.do_show.__doc__)
