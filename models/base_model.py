@@ -21,7 +21,7 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """
-            initialization
+            initialization of BaseModel
         """
         if kwargs:
             for key in kwargs:

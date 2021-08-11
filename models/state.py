@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 
 
 class State(BaseModel, Base):
-    """ State class """
+    """ State class: class to represent states of cities"""
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state")

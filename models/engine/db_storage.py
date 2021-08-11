@@ -16,13 +16,13 @@ HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
 
 
 class DBStorage:
-    """database storage for mysql conversion
+    """database storage for mysql conversion to set it
     """
     __engine = None
     __session = None
 
     def __init__(self):
-        """initializer for DBStorage"""
+        """initializer for DBStorage for mysql"""
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             HBNB_MYSQL_USER,
             HBNB_MYSQL_PWD,
@@ -51,23 +51,23 @@ class DBStorage:
         return result
 
     def new(self, obj):
-        """add object to current session
+        """add object to current session filler document
         """
         self.__session.add(obj)
 
     def save(self):
-        """commit current done work
+        """commit current done work filler document
         """
         self.__session.commit()
 
     def delete(self, obj=None):
-        """delete obj from session
+        """delete obj from session filler document
         """
         if (obj is None):
             self.__session.delete(obj)
 
     def reload(self):
-        """reload the session
+        """reload the session filler document filler
         """
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
