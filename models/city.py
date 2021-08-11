@@ -10,7 +10,7 @@ from sqlalchemy import Column, String, ForeignKey
 
 
 class City(BaseModel, Base):
-    """ City class """
+    """ City class :City class to represent a city"""
 
     __tablename__ = "cities"
     state_id = Column(String(60), ForeignKey(State.id))

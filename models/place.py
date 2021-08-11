@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    module containing places
+    module containing places to represent the place
 """
 from models.base_model import BaseModel, Base
 from models.city import City
