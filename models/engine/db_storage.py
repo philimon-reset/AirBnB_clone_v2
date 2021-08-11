@@ -6,7 +6,7 @@ from models.base_model import BaseModel, Base
 from models import city, state
 from os import environ, getenv
 from sqlalchemy.orm import scoped_session
-from sqlalchemy.orm import sessionmaker, decl_api
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
 HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
@@ -43,9 +43,9 @@ class DBStorage:
                 result.update({key: row})
         else:
             for table in Base.metadata.tables:
-                clss = models.dummy_tables[table]
-                for row in self.__session.query(clss).all():
-                    key = "{}.{}".format(clss.__name__, row.id)
+                cls = models.dummy_tables[table]
+                for row in self.__session.query(cls).all():
+                    key = "{}.{}".format(cls.__name__, row.id)
                     row.to_dict()
                     result.update({key: row})
         return result
