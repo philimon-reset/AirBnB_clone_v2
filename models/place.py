@@ -52,7 +52,7 @@ class Place(BaseModel, Base):
         """getter function for amenity attribute"""
         result = []
         for amenity in self.amenity_ids:
-            if amenity == self.id:
+            if amenity == Amenity.id:
                 result.append(amenity)
         return result
 
