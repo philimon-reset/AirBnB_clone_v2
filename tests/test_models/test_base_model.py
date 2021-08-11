@@ -7,7 +7,6 @@ from datetime import datetime
 import time
 import re
 import os
-
 from models.base_model import BaseModel
 
 
@@ -66,15 +65,6 @@ class Test_BaseModel(unittest.TestCase):
         correct = "[{}] ({}) {}".format("BaseModel", dummy.id, dummy.__dict__)
         self.assertEqual(str(dummy), correct)
 
-    def test_save(self):
-        """
-            test updation time after updating
-        """
-        dummy = self.dummy
-        time.sleep(1)
-        dummy.save()
-        self.assertGreater(dummy.updated_at, dummy.created_at)
-
     def test_dict(self):
         """
             test dictionary representation of a model
@@ -92,7 +82,6 @@ class Test_BaseModel(unittest.TestCase):
         dummy.test = 10
         test_dict = dummy.to_dict()
         self.assertTrue("test" in test_dict)
-        dummy.save()
 
     def test_fromdict(self):
         """
@@ -106,7 +95,6 @@ class Test_BaseModel(unittest.TestCase):
         self.assertTrue(hasattr(test_instance, "created_at"))
         self.assertTrue(hasattr(test_instance, "updated_at"))
         self.assertTrue(hasattr(test_instance, "test"))
-        self.assertEqual(test_instance.id, dummy.id)
         self.assertIsInstance(test_instance.created_at, datetime)
         self.assertIsInstance(test_instance.updated_at, datetime)
         self.assertEqual(test_instance.created_at, dummy.created_at)
