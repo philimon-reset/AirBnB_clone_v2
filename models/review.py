@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""review
+"""
+    contains review class to represent reviews
 """
 from models.base_model import BaseModel, Base
 from models.place import Place

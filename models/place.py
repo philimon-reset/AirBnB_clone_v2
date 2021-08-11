@@ -1,18 +1,17 @@
 #!/usr/bin/python3
 """
-    module containing place
+    module containing places
 """
 from models.base_model import BaseModel, Base
 from models.city import City
 from models.user import User
-from os import environ
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
 
 
 class Place(BaseModel, Base):
     """
-        Place class
+        Place class to represent places
     """
     __tablename__ = "places"
 
@@ -27,12 +26,11 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
     amenity_ids = []
-    storage_engine = environ.get("HBNB_TYPE_STORAGE")
     reviews = relationship("Review", backref="place")
 
     @property
     def review(self):
-        """getter attribute"""
+        """getter function for reviews attribute"""
         result = []
         for review in self.reviews:
             if review.place_id == self.id:
