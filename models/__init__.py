@@ -23,8 +23,7 @@ dummy_classes = {"BaseModel": BaseModel, "User": User,
 
 dummy_tables = {"states": State, "cities": City,
                 "users": User, "places": Place,
-                "reviews": Review, "amenities": Amenity,
-                "place_amenity": place_amenity}
+                "reviews": Review, "amenities": Amenity}
 
 storage_engine = environ.get("HBNB_TYPE_STORAGE")
 
