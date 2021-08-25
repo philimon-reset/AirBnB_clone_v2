@@ -7,6 +7,6 @@ apt-get update -y
 apt-get install nginx -y
 mkdir -p "/data/web_static/releases/test/"
 echo -e "Holberton" > "/data/web_static/releases/test/index.html"
-rm -f "/data/web_static/current"; ln -s "/data/web_static/current" "/data/web_static/releases/test/"
+rm -f "/data/web_static/current"; ln -s "/data/web_static/releases/test/" "/data/web_static/current"
 # chown -h ubuntu:ubuntu "/data/"
 sed -i "29i\ $server" "$file"
