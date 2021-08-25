@@ -13,3 +13,4 @@ rm -f "/data/web_static/current"; ln -s "/data/web_static/releases/test/" "/data
 # chown -h ubuntu:ubuntu "/data/"
 sed -i 's/"$old"/"$root"/' "$file"
 sed -i "29i\ $server" "$file"
+service nginx restart
