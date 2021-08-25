@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # set up dummy html
 
-server="\n\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n}"
+server="\n\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}"
 root="\troot /data/web_static/releases/test/index.html;\n"
 old="root /usr/share/nginx/html;"
 file="/etc/nginx/sites-available/default"
