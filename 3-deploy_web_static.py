@@ -29,8 +29,10 @@ def do_deploy(archive_path):
     """distributes an archive to your web servers
     """
     if os.path.exists(archive_path) is False:
+        print("arc0")
         return False
     try:
+        print("arc1")
         arc = archive_path.split("/")
         print("arc")
         base = arc[1].strip('.tgz')
