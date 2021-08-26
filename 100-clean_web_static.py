@@ -13,10 +13,10 @@ def do_clean(number=0):
     target = sudo('ls -t ./AirBnB_Clone_V2/versions/').split()
     if len(target) > 1:
         if number == 0 or number == 1:
-                num = 1
+                number = 1
         elif number == 2:
-                num = 2
-        cl = target[num:]
+                number = 2
+        cl = target[number:]
         print(cl)
         print(number)
         for i in range(len(cl)):
