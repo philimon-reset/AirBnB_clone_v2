@@ -4,4 +4,5 @@ env.hosts = ["104.196.155.240"]
 env.key_filename = "/home/ubuntu/.ssh/id_rsa"
 def hello():
     target = local('ls -t ./versions')
+    local("pwd")
     print(target.split())
