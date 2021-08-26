@@ -26,24 +26,29 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """distributes an archive to your web servers
+            """distributes an archive to your web servers
     """
     if os.path.exists(archive_path) is False:
         return False
     try:
         arc = archive_path.split("/")
+        print("arc")
         base = arc[1].strip('.tgz')
         put(archive_path, '/tmp/')
+        print("arc2")
         sudo('mkdir -p /data/web_static/releases/{}'.format(base))
         main = "/data/web_static/releases/{}".format(base)
+        print("arc3")
         sudo('tar -xzf /tmp/{} -C {}/'.format(arc[1], main))
         sudo('rm /tmp/{}'.format(arc[1]))
         sudo('mv {}/web_static/* {}/'.format(main, main))
+        print("arc5")
         sudo('rm -rf /data/web_static/current')
         sudo('ln -s {}/ "/data/web_static/current"'.format(main))
         return True
     except:
         return False
+
 
 
 def deploy():
@@ -52,5 +57,4 @@ def deploy():
     if path is None:
         return False
     f = do_deploy(path)
-    print(f, path)
     return f
