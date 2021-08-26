@@ -14,10 +14,12 @@ def do_clean(number=0):
     print(target)
     print(len(target), number, target[0])
     if len(target) == 2:
-            print("here")
             if number == 0 or number == 1:
+                    print("here")
                     local('rm -f ./versions/{}'.format(target[-1]))
+                    print("here")
                     sudo('rm -f ./AirBnB_Clone_V2/versions/{}'.format(target[-1]))
+                    print("here")
                     sudo('rm -rf /data/web_static/releases/{}'.format(target[-1].strip(".tgz")))
             elif number == 2:
                     pass
