@@ -2,6 +2,7 @@ from fabric.api import *
 import os.path
 
 def do_deploy(archive_path):
+        env.user = 'ubuntu'
         env.hosts = ['ubuntu@104.196.155.240', 'ubuntu@34.74.146.120']
         if os.path.exists(archive_path) == False:
                 return False
