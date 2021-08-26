@@ -11,5 +11,7 @@ env.key_filename = "/home/ubuntu/.ssh/id_rsa"
 def do_clean(number=0):
     """deletes out-of-date archives,
     """
+    target = run('ls -t ./AirBnB_Clone_V2/versions')
     if number == 0 or number == 1:
             target = run('ls | xargs stat | grep "Change" | cut -d " " -f 2,3')
+            print
