@@ -15,7 +15,7 @@ def do_deploy(archive_path):
     try:
         arc = archive_path.split("/")
         base = arc[1].strip('.tgz')
-        put(archive_path, '/tmp/{}'.format(arc[1]), use_sudo=True)
+        put(archive_path, '/tmp/{}'.format(arc[1]))
         sudo('mkdir -p /data/web_static/releases/{}'.format(base))
         main = "/data/web_static/releases/{}/".format(base)
         sudo('tar -xzf /tmp/{} -C {}'.format(arc[1], main))
