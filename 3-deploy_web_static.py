@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """web server distribution
     """
-from fabric.api import local
+from fabric.api import *
 import tarfile
 import os.path
 import re
