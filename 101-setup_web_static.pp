@@ -13,6 +13,7 @@ file { $whisper_dirs:
         owner  => 'ubuntu',
         group  => 'ubuntu',
         recurse => 'remote',
+        mode => 0777,
 }
 file { '/data/web_static/current':
   ensure => link,
