@@ -10,7 +10,7 @@ def do_pack():
         opt = re.sub(r'[^\w\s]','', name)
         with tarfile.open("web_static_{}".format(opt), "w:gz") as tar:
                 tar.add('web_static', arcname=os.path.basename('./version'))
-        t = tarfile.open(opt, 'r')
+        t = tarfile.open("web_static_{}".format(opt), 'r')
         for member in t.getmembers():
                 print(member.name)
 
