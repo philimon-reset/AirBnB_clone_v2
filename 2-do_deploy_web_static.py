@@ -13,7 +13,8 @@ def do_deploy(archive_path):
     if os.path.exists(archive_path) is False:
         return False
     try:
-        base = archive_path.strip('.tgz')
+        arc = archive_path.split("/")
+        base = arc[1].strip('.tgz')
         put(archive_path, '/tmp')
         sudo('mkdir -p /data/web_static/releases/{}'.format(base))
         main = "/data/web_static/releases/{}/".format(base)
