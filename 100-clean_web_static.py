@@ -15,7 +15,7 @@ def do_clean(number=0):
             if number == 0 or number == 1:
                     local('rm -f ./versions/{}'.format(target[1]))
                     sudo('rm -rf /data/web_static/releases/{}'.format(target[1].strip(".tgz")))
-            eif number == 2:
+            elif number == 2:
                     pass
     elif len(target) > 1:
         if number == 0 or number == 1:
