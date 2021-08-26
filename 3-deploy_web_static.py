@@ -52,5 +52,5 @@ def deploy():
     if path is None:
         return False
     f = do_deploy(path)
-    print(f)
+    print(f, path)
     return f
