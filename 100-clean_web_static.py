@@ -25,7 +25,7 @@ def do_clean(number=0):
                 for i in range(len(cl)):
                         sudo('rm -f ./AirBnB_Clone_V2/versions/{}'.format(target[i]))
                         sudo('rm -rf /data/web_static/releases/{}'.format(rem[i].strip(".tgz")))
-        elif number == '2':s
+        elif number == '2':
                 rem = target_R[2:]
                 for i in range(len(cl)):
                         sudo('rm -f ./AirBnB_Clone_V2/versions/{}'.format(target[i]))
