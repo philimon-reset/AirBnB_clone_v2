@@ -6,5 +6,5 @@ from datetime import datetime
 def do_pack():
         target = local("mkdir -p version")
         name = datetime.now()
-        with tarfile.open('web_static', "w:gz") as tar:
-                tar.add(name, arcname=os.path.basename('./version'))
+        with tarfile.open(name, "w:gz") as tar:
+                tar.add("web_static", arcname=os.path.basename('./version'))
