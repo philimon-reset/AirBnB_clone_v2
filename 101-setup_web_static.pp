@@ -10,6 +10,8 @@ package {'nginx':
 
 file { $whisper_dirs:
         ensure => 'directory',
+        owner  => 'ubuntu',
+        group  => 'ubuntu',
 }
 file { '/data/web_static/current':
   ensure => link,
