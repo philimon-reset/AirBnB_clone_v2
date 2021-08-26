@@ -14,9 +14,9 @@ def do_clean(number=0):
     print(len(target), number, target[0])
     if len(target) == 2:
             if number == 0 or number == 1:
-                    local('rm -f ./versions/{}'.format(target[1]))
+                    local('rm -f ./versions/{}'.format(target[-1]))
                     print("here")
-                    sudo('rm -rf /data/web_static/releases/{}'.format(target[1].strip(".tgz")))
+                    sudo('rm -rf /data/web_static/releases/{}'.format(target[-1].strip(".tgz")))
             elif number == 2:
                     pass
     elif len(target) > 1:
