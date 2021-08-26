@@ -52,7 +52,6 @@ def do_deploy(archive_path):
         return False
 
 
-
 def deploy():
     """distributes an archive to your web servers"""
     path = do_pack()
