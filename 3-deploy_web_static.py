@@ -20,7 +20,7 @@ def do_pack():
     opt = re.sub(r'[^\w\s]', '', name)
     tar = local('tar -cvzf versions/web_static_{}.tgz web_static'.format(opt))
     if os.path.exists("./versions/web_static_{}.tgz".format(opt)):
-        return os.path.normpath("/versions/web_static_{}.tgz".format(opt))
+        return os.path.normpath("./versions/web_static_{}.tgz".format(opt))
     else:
         return None
 
@@ -28,7 +28,7 @@ def do_pack():
 def do_deploy(archive_path):
     """distributes an archive to your web servers
     """
-    if os.path.exists("." + archive_path) is False:
+    if os.path.exists(archive_path) is False:
         print(archive_path)
         return False
     try:
@@ -36,7 +36,7 @@ def do_deploy(archive_path):
         arc = archive_path.split("/")
         print("arc")
         base = arc[1].strip('.tgz')
-        put("." + archive_path, '/tmp/')
+        put(archive_path, '/tmp/')
         sudo('mkdir -p /data/web_static/releases/{}'.format(base))
         print("arc2")
         main = "/data/web_static/releases/{}".format(base)
