@@ -17,7 +17,7 @@ def do_clean(number=0):
                     sudo('rm -rf /data/web_static/releases/{}'.format(target[-1].strip(".tgz")))
             elif number == '2':
                     pass
-    elif len(target) > 1:
+    elif len(target) > 2:
         if number == '0' or number == '1':
                 cl = target[1:]
                 print("here")
