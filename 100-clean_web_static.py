@@ -18,6 +18,8 @@ def do_clean(number=0):
         elif number == 2:
                 num = 2
         cl = target[num:]
+        print(cl)
+        print(num)
         for i in range(len(cl)):
                 local('rm -f ./versions/{}'.format(cl[i]))
                 print(sudo("pwd"))
