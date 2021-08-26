@@ -11,7 +11,7 @@ def do_pack():
         with tarfile.open("./version/web_static_{}.tgz".format(opt), "w:gz") as tar:
                 tar.add('web_static')
         if os.path.exists("./version/web_static_{}.tgz".format(opt)):
-                return os.path.abspath("./version/web_static_{}.tgz".format(opt))
+                return os.path.normpath("/version/web_static_{}.tgz".format(opt))
         else:
                 return None
 
