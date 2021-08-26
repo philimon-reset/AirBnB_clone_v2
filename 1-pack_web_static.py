@@ -8,7 +8,7 @@ def do_pack():
         target = local("mkdir -p version")
         name = str(datetime.now()).replace(" ", '')
         opt = re.sub(r'[^\w\s]','', name)
-        with tarfile.open(opt, "w:gz") as tar:
+        with tarfile.open("web_static_{}".format(opt), "w:gz") as tar:
                 tar.add('web_static', arcname=os.path.basename('./version'))
         t = tarfile.open(opt, 'r')
         for member in t.getmembers():
