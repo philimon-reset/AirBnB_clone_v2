@@ -20,6 +20,7 @@ def do_clean(number=0):
     elif len(target) > 1:
         if number == '0' or number == '1':
                 cl = target[1:]
+                print("here")
                 for i in range(len(cl)):
                         local('rm -f ./versions/{}'.format(cl[i]))
                         sudo('rm -f ./AirBnB_Clone_V2/versions/{}'.format(target[i]))
