@@ -14,7 +14,7 @@ def do_clean(number=0):
     print(target)
     print(len(target), number, target[0])
     if len(target) == 2:
-            if number == 0 or number == 1:
+            if number == '0' or number == '1':
                     print("here")
                     local('rm -f ./versions/{}'.format(target[-1]))
                     print("here")
