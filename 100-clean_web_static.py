@@ -24,3 +24,5 @@ def do_clean(number=0):
                 local('rm -f ./versions/{}'.format(cl[i]))
                 print(sudo("pwd"))
                 sudo('rm -rf /data/web_static/releases/{}'.format(cl[i].strip(".tgz")))
+    else:
+            pass
