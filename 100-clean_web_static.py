@@ -9,10 +9,14 @@ env.key_filename = "/home/ubuntu/.ssh/id_rsa"
 
 
 def do_clean(number=0):
-    """deletes out-of-date archives,
-    """
-    target = sudo('ls -t ./AirBnB_Clone_V2/versions').split()
+    """deletes out-of-date archives"""
+    target = sudo('ls -t ./AirBnB_Clone_V2/versions/').split()
     if number == 0 or number == 1:
-            cleanup = target[1:]
-            for i in range(len(cleanup)):
-                    sudo('rm /data/web_static/releases/{}'.format(cleanup[i].strip(".tgz")))
+            num = 1
+    elif number == 2:
+            num = 2
+    cleanup = target[num:]
+    for i in range(len(cleanup)):
+            local('rm ./AirBnB_Clone_V2/versions/{}'.format(cleanup[i]))
+            sudo('rm /data/web_static/releases/{}'.format(cleanup[i].strip(".tgz")))
+
