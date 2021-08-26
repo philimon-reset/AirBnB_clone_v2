@@ -1,15 +1,25 @@
+#!/usr/bin/python3
+        """web server distribution
+        """
 from fabric.api import *
 import os.path
 
 def do_deploy(archive_path):
+        """distributes an archive to your web servers
+        """
         env.user = 'ubuntu'
         env.hosts = ['ubuntu@104.196.155.240', 'ubuntu@34.74.146.120']
+        env.key_filename = '~/.ssh/id_rsa'
         if os.path.exists(archive_path) == False:
                 return False
-        base = archive_path.strip('.tgz')
-        put(archive_path, '/tmp/')
-        run ('mkdir -p /data/web_static/releases/{}'.format(base))
-        run('tar -xzf /tmp/{} -C /data/web_static/releases/{}/'.format(archive_path, base))
-        run('rm /tmp/{}'.format(archive_path))
-        run('rm -rf /data/web_static/current')
-        run ('ln -s  "/data/web_static/releases/{}/" "/data/web_static/current"'.format(base))
+        try:
+                base = archive_path.strip('.tgz')
+                put(archive_path, '/tmp')
+                run ('mkdir -p /data/web_static/releases/{}'.format(base))
+                run('tar -xzf /tmp/{} -C /data/web_static/releases/{}/'.format(archive_path, base))
+                run('rm /tmp/{}'.format(archive_path))
+                run('rm -rf /data/web_static/current')
+                run ('ln -s  "/data/web_static/releases/{}/" "/data/web_static/current"'.format(base))
+                return True
+        except:
+                return False
