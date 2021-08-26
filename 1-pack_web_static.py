@@ -14,6 +14,3 @@ def do_pack():
                 return os.path.normpath("/version/web_static_{}.tgz".format(opt))
         else:
                 return None
-
-if __name__ == '__main__':
-        do_pack()
