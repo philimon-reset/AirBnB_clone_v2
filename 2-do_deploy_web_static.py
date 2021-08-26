@@ -15,13 +15,13 @@ def do_deploy(archive_path):
     try:
         base = archive_path.strip('.tgz')
         put(archive_path, '/tmp')
-        run('mkdir -p /data/web_static/releases/{}'.format(base))
+        sudo('mkdir -p /data/web_static/releases/{}'.format(base))
         main = "/data/web_static/releases/{}/".format(base)
-        run('tar -xzf /tmp/{} -C {}'.format(archive_path, main))
-        run('rm /tmp/{}'.format(archive_path))
-        run('mv {}/web_static/* {}'.format(main, main))
-        run('rm -rf /data/web_static/current')
-        run('ln -s {} "/data/web_static/current"'.format(main))
+        sudo('tar -xzf /tmp/{} -C {}'.format(archive_path, main))
+        sudo('rm /tmp/{}'.format(archive_path))
+        sudo('mv {}/web_static/* {}'.format(main, main))
+        sudo('rm -rf /data/web_static/current')
+        sudo('ln -s {} "/data/web_static/current"'.format(main))
         return True
     except:
         return False
