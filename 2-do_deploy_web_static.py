@@ -3,7 +3,8 @@
 from fabric.api import *
 import os.path
 
-
+env.user = 'ubuntu'
+env.hosts = ["104.196.155.240", "34.74.146.120"]
 def do_pack():
     """distributes an archive to your web servers
     """
@@ -20,8 +21,6 @@ def do_pack():
 def do_deploy(archive_path):
     """distributes an archive to your web servers
     """
-    env.user = 'ubuntu'
-    env.hosts = ["104.196.155.240", "34.74.146.120"]
     if os.path.exists(archive_path) is False:
         return False
     try:
