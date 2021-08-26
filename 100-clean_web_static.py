@@ -11,7 +11,7 @@ env.key_filename = "/home/ubuntu/.ssh/id_rsa"
 def do_clean(number=0):
     """deletes out-of-date archives"""
     target = local('ls -t ./versions/').split()
-    print(target)
+    print(local("pwd"))
     print(len(target), number, target[0])
     if len(target) == 2:
             if number == 0 or number == 1:
