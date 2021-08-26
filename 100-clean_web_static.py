@@ -21,4 +21,4 @@ def do_clean(number=0):
         for i in range(len(cl)):
                 local('rm f ./versions/{}'.format(cl[i]))
                 print(sudo("pwd"))
-                sudo('rm -rf /data/web_static/releases/{}'.format(cl[i].strip(".tgz")))s
+                sudo('rm -rf /data/web_static/releases/{}'.format(cl[i].strip(".tgz")))
