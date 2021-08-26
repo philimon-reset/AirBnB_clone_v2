@@ -36,7 +36,6 @@ def do_deploy(archive_path):
         arc = archive_path.split("/")
         print("arc")
         base = arc[1].strip('.tgz')
-        print("arc2")
         put(archive_path, '/tmp/')
         print("arc2")
         sudo('mkdir -p /data/web_static/releases/{}'.format(base))
