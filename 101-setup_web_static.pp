@@ -9,25 +9,25 @@ package {'nginx':
 }
 
 file { $whisper_dirs:
-        ensure => 'directory',
-        owner  => 'ubuntu',
-        group  => 'ubuntu',
+        ensure  => 'directory',
+        owner   => 'ubuntu',
+        group   => 'ubuntu',
         recurse => 'remote',
-        mode => 0777,
+        mode    => '0777',
 }
 file { '/data/web_static/current':
   ensure => link,
   target => '/data/web_static/releases/test/',
 }
 file {'/data/web_static/releases/test/index.html':
-  ensure => present,
+  ensure  => present,
   content => 'Holberton School for the win!',
 }
 
 file_line {'deploy static':
-  path => '/etc/nginx/sites-available/default',
+  path  => '/etc/nginx/sites-available/default',
   after => 'server_name _;',
-  line => "\n\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}",
+  line  => "\n\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}",
 }
 
 service {'nginx':

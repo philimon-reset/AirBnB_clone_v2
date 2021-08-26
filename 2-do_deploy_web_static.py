@@ -31,8 +31,9 @@ def do_deploy(archive_path):
         main = "/data/web_static/releases/{}/".format(base)
         run('tar -xzf /tmp/{} -C {}'.format(archive_path, main))
         run('rm /tmp/{}'.format(archive_path))
+        run('mv {}/web_static/* {}'.format(main, main))
         run('rm -rf /data/web_static/current')
-        run('ln -s  {} "/data/web_static/current"'.format(main))
+        run('ln -s {} "/data/web_static/current"'.format(main))
         return True
     except:
         return False
