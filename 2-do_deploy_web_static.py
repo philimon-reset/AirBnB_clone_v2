@@ -8,9 +8,7 @@ import os.path
 def do_deploy(archive_path):
     """distributes an archive to your web servers
     """
-#     env.user = 'ubuntu'
-      env.hosts = ['104.196.155.240', '34.74.146.120']
-#     env.key_filename = '~/.ssh/id_rsa'
+    env.hosts = ['ubuntu@104.196.155.240', 'ubuntu@34.74.146.120']
     if os.path.exists(archive_path) is False:
         return False
     try:
