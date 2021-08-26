@@ -22,13 +22,11 @@ def do_clean(number=0):
                 cl = target[1:]
                 print("here")
                 for i in range(len(cl)):
-                        local('rm -f ./versions/{}'.format(cl[i]))
                         sudo('rm -f ./AirBnB_Clone_V2/versions/{}'.format(target[i]))
                         sudo('rm -rf /data/web_static/releases/{}'.format(cl[i].strip(".tgz")))
         elif number == '2':
                 cl = target[2:]
                 for i in range(len(cl)):
-                        local('rm -f ./versions/{}'.format(cl[i]))
                         sudo('rm -f ./AirBnB_Clone_V2/versions/{}'.format(target[i]))
                         sudo('rm -rf /data/web_static/releases/{}'.format(cl[i].strip(".tgz")))
     else:
