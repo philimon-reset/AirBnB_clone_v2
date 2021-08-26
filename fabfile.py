@@ -1,3 +1,5 @@
-from fabric.api import run
-def host_type():
-    run('uname -s')
+#!/usr/bin/env python
+from fabric.api import local
+
+def uptime():
+  local('uptime')
