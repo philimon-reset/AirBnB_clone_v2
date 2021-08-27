@@ -24,6 +24,10 @@ file {'/data/web_static/releases/test/index.html':
   content => 'Holberton School for the win!',
 }
 
+exec { 'chown -R ubuntu:ubuntu /data/':
+  path => '/usr/bin/:/usr/local/bin/:/bin/'
+}
+
 file_line {'deploy static':
   path  => '/etc/nginx/sites-available/default',
   after => 'server_name _;',
@@ -32,4 +36,7 @@ file_line {'deploy static':
 
 service {'nginx':
   ensure  => running,
+}
+
+exec {'/etc/init.d/nginx restart':
 }
