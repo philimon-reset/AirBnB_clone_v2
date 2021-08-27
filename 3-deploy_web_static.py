@@ -15,7 +15,7 @@ env.key_filename = "/home/ubuntu/.ssh/id_rsa"
 def do_pack():
     """distributes an archive to your web servers
     """
-    target = local("mkdir -p versions")
+    target = local("mkdir -p ./versions")
     name = str(datetime.now()).replace(" ", '')
     opt = re.sub(r'[^\w\s]', '', name)
     tar = local('tar -cvzf versions/web_static_{}.tgz web_static'.format(opt))
