@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """web server distribution"""
 from fabric.api import *
+from fabric import Connection
 import os.path
 
 env.user = 'ubuntu'
