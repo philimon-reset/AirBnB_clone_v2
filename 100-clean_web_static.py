@@ -11,7 +11,10 @@ env.key_filename = "/home/ubuntu/.ssh/id_rsa"
 def do_clean(number=0):
     """deletes out-of-date archives"""
     target = local('ls -t ~/AirBnB_Clone_V2/versions/').split()
-    target_R = sudo('ls -t /data/web_static/releases/').split()
+    try:
+        target_R = sudo('ls -t /data/web_static/releases/').split()
+    except Exception as e:
+        print(e)
     paths = "/data/web_static/releases"
     if len(target) == 2:
         if number == '0' or number == '1':
