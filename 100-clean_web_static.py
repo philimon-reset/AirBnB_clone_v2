@@ -15,21 +15,19 @@ def do_clean(number=0):
         target_R = sudo("ls -t .").split()
     paths = "/data/web_static/releases"
     number = int(number)
+    if number == 0:
+        num = 1:
+    else:
+        num = number
     if len(target_R) > 0:
-        if number == 0 or number == 1:
-            rem = target_R[1:]
-            if len(target) == number or len(target) == 0:
-                cl = target[1:]
-                for i in range(len(cl)):
-                    local('rm -f ~/AirBnB_Clone_V2/versions/{}'.format(target[-1]))
-            for j in range(len(rem)):
-                sudo('rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
-        elif number == 2:
-            cl = target[2:]
-            rem = target_R[2:]
+        if len(target) == number or len(target) == 0:
+            pass
+        else:
+            cl = target[num:]
             for i in range(len(cl)):
                 local('rm -f ~/AirBnB_Clone_V2/versions/{}'.format(target[-1]))
-            for j in range(len(rem)):
-                sudo('rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
+        rem = target_R[num:]
+        for j in range(len(rem)):
+            sudo('rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
     else:
         pass
