@@ -12,7 +12,7 @@ def do_clean(number=0):
     """deletes out-of-date archives"""
     target = local('ls -t ~/AirBnB_Clone_V2/versions/').split()
     with cd("/data/web_static/releases"):
-        target_R = run("ls -t .").split()
+        target_R = sudo("ls -t .").split()
     paths = "/data/web_static/releases"
     number = int(number)
     if len(target_R) > 0:
@@ -23,13 +23,13 @@ def do_clean(number=0):
                 for i in range(len(cl)):
                     local('rm -f ~/AirBnB_Clone_V2/versions/{}'.format(target[-1]))
             for j in range(len(rem)):
-                run('rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
+                sudo('rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
         elif number == 2:
             cl = target[2:]
             rem = target_R[2:]
             for i in range(len(cl)):
                 local('rm -f ~/AirBnB_Clone_V2/versions/{}'.format(target[-1]))
             for j in range(len(rem)):
-                run('rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
+                sudo('rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
     else:
         pass
