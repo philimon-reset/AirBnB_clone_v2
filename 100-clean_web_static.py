@@ -16,7 +16,7 @@ def do_clean(number=0):
     paths = "/data/web_static/releases"
     number = int(number)
     if number == 0:
-        num = 1:
+        num = 1
     else:
         num = number
     if len(target_R) > 0:
