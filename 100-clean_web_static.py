@@ -15,7 +15,8 @@ def do_clean(number=0):
     paths = "/data/web_static/releases"
     number = int(number)
     if len(target) > 1:
-        if number == 0 or number == 1:            cl = target[1:]
+        if number == 0 or number == 1:
+            cl = target[1:]
             rem = target_R[1:]
             for i in range(len(cl)):
                 local('rm -f ~/AirBnB_Clone_V2/versions/{}'.format(target[-1]))
@@ -27,7 +28,6 @@ def do_clean(number=0):
             for i in range(len(cl)):
                 local('rm -f ~/AirBnB_Clone_V2/versions/{}'.format(target[-1]))
             for j in range(len(rem)):
-                sudo(
-                    'rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
+                sudo('rm -rf {}/{}'.format(paths, rem[-1].strip(".tgz")))
     else:
         pass
