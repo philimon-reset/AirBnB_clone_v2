@@ -22,7 +22,7 @@ def HBNB():
 @app.route('/c/<text>', strict_slashes=False)
 def text(text):
     """return text given"""
-    return "{}".format(text.replace("_", " "))
+    return "C {}".format(text.replace("_", " "))
 
 
 if __name__ == "__main__":
