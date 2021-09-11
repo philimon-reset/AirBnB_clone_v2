@@ -4,6 +4,7 @@
 """
 
 from models.base_model import BaseModel, Base
+import models
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from os import environ
@@ -20,7 +21,7 @@ class State(BaseModel, Base):
         """cities list
         """
         result = []
-        for city in self.cities:
-            if city.state_id == self.id:
-                result.append(city)
+        for j, i in models.storage.all(models.city.City).items():
+            if (i.state_id == self.id):
+                result.append(i)
         return result
