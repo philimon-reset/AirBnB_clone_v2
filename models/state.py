@@ -6,6 +6,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+from os import environ
 
 
 class State(BaseModel, Base):
@@ -16,6 +17,8 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
+        """cities list
+        """
         result = []
         for city in self.cities:
             if city.state_id == self.id:
