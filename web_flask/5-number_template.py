@@ -39,9 +39,9 @@ def num_display(n):
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def render_num_route(n):
-        """serves static files"""
-        return render_template("5-number.html", name=n)
+def num_html(n):
+    """display HTML is "n" is a number only"""
+    return render_template('5-number.html', name=n)
 
 
 if __name__ == "__main__":
