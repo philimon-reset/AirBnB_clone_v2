@@ -15,7 +15,7 @@ place_amenity = Table('place_amenity', Base.metadata,
                              primary_key=True, nullable=False),
                       Column('amenity_id', String(60),
                              ForeignKey('amenities.id'),
-                             primary_key=True, nullable=False))
+                             primary_key=True, nullable=False), keep_existing=True)
 
 
 class Place(BaseModel, Base):
@@ -24,8 +24,8 @@ class Place(BaseModel, Base):
         Place class to represent places
     """
     __tablename__ = "places"
-
-    city_id = Column(String(60), ForeignKey(City.id), primary_key=True, nullable=False)
+    __table_args__ = {'mysql_engine':'InnoDB', 'mysql_default_charset':'latin1'}
+    city_id = Column(String(60), ForeignKey(City.id), nullable=False)
     user_id = Column(String(60), ForeignKey(User.id), nullable=False)
     name = Column(String(128), nullable=False)
     description = Column(String(1024), nullable=True)
