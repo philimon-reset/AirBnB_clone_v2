@@ -50,6 +50,11 @@ class DBStorage:
                     result.update({key: row})
         return result
 
+    def rollback(self):
+        """rollback changes
+        """
+        self.__session.rollback()
+
     def new(self, obj):
         """add object to current session
         """

@@ -67,6 +67,7 @@ class HBNBCommand(cmd.Cmd):
                 print(new_instance.id)
             except:
                 print("** class doesn't exist **")
+                models.storage.rollback()
         else:
             print("** class name missing **")
 
