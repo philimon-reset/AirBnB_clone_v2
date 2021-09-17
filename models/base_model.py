@@ -15,7 +15,6 @@ class BaseModel():
         Base class to define all common attributes and methods for
         other classes
     """
-    # __table_args__ = {'mysql_engine':'InnoDB', 'mysql_default_charset':'latin1'}
     id = Column(String(60), primary_key=True, nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
