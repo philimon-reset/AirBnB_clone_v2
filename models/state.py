@@ -20,6 +20,7 @@ class State(BaseModel, Base):
         cities = relationship("City", backref="state")
     else:
         name = ""
+
         @property
         def cities(self):
             """cities list

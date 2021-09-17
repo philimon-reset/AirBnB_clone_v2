@@ -13,7 +13,6 @@ from os import environ
 storage_engine = environ.get("HBNB_TYPE_STORAGE")
 
 
-
 class Amenity(BaseModel, Base):
     """
         Amenity class
