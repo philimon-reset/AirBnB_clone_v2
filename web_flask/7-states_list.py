@@ -20,11 +20,8 @@ def teardown_db(exception):
 def states_list():
     """ list of state ids
     """
-    try:
-        data = storage.all(State)
-        return render_template('7-states_list.html', total=data.values())
-    except Exception as e:
-        teardown_db(e)
+    data = storage.all(State)
+    return render_template('7-states_list.html', total=data.values())
 
 
 if __name__ == '__main__':
