@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Flask framework
 """
-from flask import Flask, url_for, render_template, request
+from flask import Flask, render_template
 from models import storage
 from models.state import State
 
