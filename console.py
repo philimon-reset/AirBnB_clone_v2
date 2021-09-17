@@ -40,31 +40,34 @@ class HBNBCommand(cmd.Cmd):
                 args = arg.split()
                 template = models.dummy_classes[args[0]]
                 new_instance = template()
-                for pair in args[1:]:
-                    pair_split = pair.split("=")
-                    if (hasattr(new_instance, pair_split[0])):
-                        value = pair_split[1]
-                        flag = 0
-                        if (value.startswith('"')):
-                            value = value.strip('"')
-                            value = value.replace("\\", "")
-                            value = value.replace("_", " ")
-                        elif ("." in value):
-                            try:
-                                value = float(value)
-                            except:
-                                flag = 1
+                try:
+                    for pair in args[1:]:
+                        pair_split = pair.split("=")
+                        if (hasattr(new_instance, pair_split[0])):
+                            value = pair_split[1]
+                            flag = 0
+                            if (value.startswith('"')):
+                                value = value.strip('"')
+                                value = value.replace("\\", "")
+                                value = value.replace("_", " ")
+                            elif ("." in value):
+                                try:
+                                    value = float(value)
+                                except:
+                                    flag = 1
+                            else:
+                                try:
+                                    value = int(value)
+                                except:
+                                    flag = 1
+                            if (not flag):
+                                setattr(new_instance, pair_split[0], value)
                         else:
-                            try:
-                                value = int(value)
-                            except:
-                                flag = 1
-                        if (not flag):
-                            setattr(new_instance, pair_split[0], value)
-                    else:
-                        continue
-                new_instance.save()
-                print(new_instance.id)
+                            continue
+                    new_instance.save()
+                    print(new_instance.id)
+                except:
+                    new_instance.rollback()
             except:
                 print("** class doesn't exist **")
                 models.storage.rollback()
