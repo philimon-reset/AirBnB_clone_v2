@@ -7,7 +7,14 @@ from datetime import datetime
 import models
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
-Base = declarative_base()
+from os import environ
+
+storage_engine = environ.get("HBNB_TYPE_STORAGE")
+
+if (storage_engine == "db"):
+    Base = declarative_base()
+else:
+    Base = object
 
 
 class BaseModel():
@@ -56,13 +63,14 @@ class BaseModel():
         """
             custom representation of a model
         """
+        custom = self.__dict__.copy()
         custom_dict = {}
         custom_dict.update({"__class__": self.__class__.__name__})
-        for key in list(self.__dict__):
+        for key in list(custom):
             if key in ("created_at", "updated_at"):
                 custom_dict.update({key: getattr(self, key).isoformat()})
             elif key == "_sa_instance_state":
-                self.__dict__.pop(key)
+                custom.pop(key)
             else:
                 custom_dict.update({key: getattr(self, key)})
         return custom_dict

@@ -83,8 +83,3 @@ class Place(BaseModel, Base):
             temp = models.dummy_classes['Amenity']
             if (isinstance(obj, models.storage.all(temp))):
                 self.amenity_ids.append(obj.id)
-
-    def __init__(self, *args, **kwargs):
-        """init basemodels
-        """
-        super(Place, self).__init__()
