@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def teardown_db(exception):
+    """ teardown db
+    """
     if storage is not None:
         storage.close()
 
